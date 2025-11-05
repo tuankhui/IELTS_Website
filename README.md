@@ -1,6 +1,6 @@
 # IELTS Website
 
-IELTS Website is a website support for IELTS Learner ^^.
+IELTS Website is a website that supports IELTS Learner ^^.
 
 ---
 
