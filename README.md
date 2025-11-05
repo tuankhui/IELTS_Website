@@ -1,6 +1,7 @@
 # IELTS Website
 
 IELTS Website is a website that supports IELTS Learner ^^.
+Refined and improved on our old project: [Project](https://github.com/0x2ee08/HSGS-Hackathon-Writing-2024)
 
 ---
 
