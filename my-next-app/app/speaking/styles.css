@@ -1,0 +1,66 @@
+.custom-button {
+    background-color: #2196f3; /* Blue 500 */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Added position relative */
+    width: 100px; /* Set a fixed width */
+}
+
+.custom-button:hover {
+    background-color: #2489db; /* Blue 600 */
+}
+
+.custom-button:disabled {
+    background-color: rgb(134, 134, 134);
+    cursor: not-allowed;
+    color: rgb(243, 243, 243);
+}
+
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.custom-saving-button {
+    background-color: #2196f3; /* Blue 500 */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Added position relative */
+}
+
+.custom-saving-button:hover {
+    background-color: #2489db; /* Blue 600 */
+}
+
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+

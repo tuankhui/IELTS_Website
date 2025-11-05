@@ -1,0 +1,75 @@
+/* RoleSelectionForm.css */
+.role-selection-form {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-label {
+    position: relative;
+    padding-left: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.radio-label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.radio-group input[type="radio"]:checked + .radio-label:before {
+    background: #007bff;
+    border-color: #007bff;
+}
+
+.radio-group input[type="radio"]:checked + .radio-label:after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translate(-20%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.radio-label:hover:before {
+    border-color: #007bff;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center; /* Align items horizontally in the center */
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+
+.radio-label {
+    margin: 0 10px; /* Adjust spacing between labels */
+}

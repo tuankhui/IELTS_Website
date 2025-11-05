@@ -1,0 +1,74 @@
+.userProfileContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.profileName {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color:black;
+}
+
+.profileImage {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.profileImage img {
+  border-radius: 50%;
+}
+
+.profileTextContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.editButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: skyblue;
+}
+
+.chartContainer {
+  margin: 2rem;
+}
+
+.submissionHistory {
+  margin: 2rem;
+}
+
+.alert {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}

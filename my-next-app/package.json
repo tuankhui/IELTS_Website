@@ -1,0 +1,52 @@
+{
+  "name": "my-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/joy": "^5.0.0-beta.36",
+    "@mui/material": "^5.15.20",
+    "@nextui-org/react": "^2.4.2",
+    "@types/dom-speech-recognition": "^0.0.4",
+    "axios": "^1.7.2",
+    "chart.js": "^4.4.3",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^11.2.11",
+    "jszip": "^3.10.1",
+    "next": "^14.2.33",
+    "openai": "^4.52.0",
+    "openapi": "^1.0.1",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.24.0",
+    "react-typed": "^2.0.12",
+    "recordrtc": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/recordrtc": "^5.6.14",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

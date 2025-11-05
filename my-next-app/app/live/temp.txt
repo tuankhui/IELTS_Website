@@ -1,0 +1,115 @@
+'use client';
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Container, TextField, Button, Typography, Paper, CircularProgress } from '@mui/material';
+import Head from 'next/head';
+import { motion } from 'framer-motion';
+import config from '../config';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ContestDetails from '../components/ContestDetails';
+
+// Example of animating buttons
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+        transition: {
+            duration: 0.3,
+            yoyo: Infinity
+        }
+    }
+};
+
+const WritingPage: React.FC = () => {
+    const [task, setTask] = useState<string>('');
+    const [task1, setTask1] = useState<string>('');
+    const [task2, setTask2] = useState<string>('');
+    const [loadingEvaluation, setLoadingEvaluation] = useState<boolean>(false);
+
+    // Example in WritingPage component for handleGenerateTaskWithTopic
+    const handleSubmit = async () => {
+        setLoadingEvaluation(true);
+        const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
+        try {
+
+        } catch (error) {
+
+        } finally {
+            setLoadingEvaluation(false);
+        }
+    };
+
+    return (
+        <div>
+            <Header />
+            
+
+            <div className="bg-gradient-to-b from-transparent to-white text-gray-800 min-h-screen flex items-center justify-center">
+                <Container maxWidth="md" className="p-6 rounded-lg shadow-lg bg-white dark-mode:bg-gray-800">
+                <Typography variant="h3" className="text-4xl mb-6 text-blue-900 text-center font-bold">
+                    IELTS Writing Test
+                </Typography>           
+                    <Paper elevation={3} className="p-10 mb-10 rounded-lg">
+                        Task: Not in the contest time.
+                    </Paper>
+
+                    {task && (
+                        <Paper elevation={3} className="p-10 mb-10 rounded-lg">
+                            <Typography variant="h5" className="text-xl mb-3 text-blue-900 text-center">
+                                Generated Task
+                            </Typography>
+                            <ReactMarkdown>{task}</ReactMarkdown>
+                        </Paper>
+                    )}
+                    <Paper elevation={3} className="p-10 mb-10 rounded-lg">
+                        <TextField
+                            fullWidth
+                            multiline
+                            rows={4}
+                            label="Writing Task 1"
+                            variant="outlined"
+                            value={task1}
+                            onChange={(e) => setTask1(e.target.value)}
+                            style={{ width: '100%', marginBottom: '2rem' }} // Adjust width and add margin bottom as needed
+                        />
+
+                        <TextField
+                            fullWidth
+                            multiline
+                            rows={4}
+                            label="Writing Task 2"
+                            variant="outlined"
+                            value={task2}
+                            onChange={(e) => setTask2(e.target.value)}
+                            style={{ width: '100%', marginBottom: '2rem' }} // Adjust width and add margin bottom as needed
+                        />
+
+                        <div className="flex justify-center">
+                            <motion.button
+                                variants={buttonVariants} // Apply the animation variant
+                                whileHover="hover" // Trigger the animation on hover
+                                onClick={handleSubmit}
+                                disabled={loadingEvaluation}
+                                className={`w-full sm:w-auto rounded-lg py-3 px-6 sm:py-2 sm:px-8 text-white bg-blue-500 focus:outline-none focus:ring ${loadingEvaluation ? 'opacity-90 cursor-not-allowed' : ''}`}
+                                style={{ margin: 'auto' }} // Center the button horizontally
+                            >
+                                {loadingEvaluation ? (
+                                    <CircularProgress size={24} color="inherit" style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+                                ) : (
+                                    'Submit'
+                                )}
+                            </motion.button>
+                        </div>
+                    </Paper>
+                </Container>
+            </div>
+            <Footer />
+        </div>
+    );
+};
+
+export default WritingPage;

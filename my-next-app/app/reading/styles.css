@@ -1,0 +1,152 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+}
+
+.powered-by {
+  color: gray;
+  font-size: 12px;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.right-panel{
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.reading-material, .check-answers {
+  margin-bottom: 20px;
+}
+
+.reading-material {
+  font-size: 20px;
+}
+
+.question {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.question-content {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.choices {
+  margin-top: 10px;
+}
+
+.choice {
+  margin-bottom: 10px;
+}
+
+.check-answers-box {
+  border: 2px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+
+.result {
+  margin-bottom: 10px;
+}
+
+.result.correct {
+  color: green;
+}
+
+.result.incorrect {
+  color: red;
+}
+
+.reading-material {
+  white-space: pre-wrap; /* This will preserve newlines and spaces */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.check-button:hover {
+  background-color: #c62828; /* Darker red on hover */
+}
+
+.check-button:active {
+  background-color: #b71c1c; /* Even darker red on click */
+}
+
+.welcome-content {
+  font-size: 40px;
+  padding-top: 15px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content > * {
+  margin: 2px;
+}
+
+.welcome-input {
+  padding-top: 5px;
+  width: 10em;
+  height: auto;
+}
+
+.h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.h4 {
+  display: block;
+  font-size: 1.3em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+

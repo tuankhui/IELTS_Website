@@ -1,0 +1,103 @@
+/* Add this CSS to your stylesheet */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+  
+  
+  .contests-section {
+    padding: 2rem;
+    background-color: #fff;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contest-card {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+  }
+  
+  .contest-card h3 {
+    margin-top: 0;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: #ff5f57;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag_public {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: #5dd461;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;  */
+  /* /* } */
+  
+  .load-more-button {
+    display: block;
+    margin: 1rem auto;
+    background-color: #28a745;
+  }
+  
+  .alert {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 4px;
+  }
+  
+  .alert.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .alert.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .alert button {
+    background: none;
+    border: none;
+    color: inherit;
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  

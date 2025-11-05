@@ -1,0 +1,135 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-bar {
+  background-color: #282c34;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+}
+
+.powered-by {
+  color: gray;
+  font-size: 12px;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.right-panel{
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.reading-material{
+  font-size: 22px;
+  height: 100%
+}
+
+.question {
+  margin-bottom: 20px;    
+}
+
+.question-content {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.choices {
+  margin-top: 10px;
+}
+
+.choice {
+  margin-bottom: 10px;
+}
+
+.result {
+  margin-bottom: 10px;
+}
+
+.result.correct {
+  color: green;
+}
+
+.result.incorrect {
+  color: red;
+}
+
+.reading-material {
+  white-space: pre-wrap; /* This will preserve newlines and spaces */
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button-checker{
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.result-bar{
+  padding-top: 25px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc; 
+}
+
+.summary-paragraph-blanks{
+  padding-top: 25px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc; 
+  font-size: 22px;
+}
+
+.HeadingMatching{
+  font-size: 22px;
+}

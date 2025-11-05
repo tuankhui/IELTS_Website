@@ -1,0 +1,362 @@
+router.post('/rewrite', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: ` ${paragraph} \n\n Bold all grammar mistakes. (ONLY GIVE THE  PARAGRAPH DO NOT PRINT ANYTHING ELSE) `}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+
+//evaluate1
+router.post('/evaluate-paragraph-1', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `GIVE THE BAND SCORE OF THIS CRITERIA : COHERENCE AND COHESION .DONT ANSWER ANYTHING ELSE (ONLY NUMBER NO ANY OTHER TEXT OR CHARACTER , ALWAYS SHOW FIRST DECIMAL DIGIT) \n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//discribe1
+router.post('/discribe-paragraph-1', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `DESCRIBE THIS PARAGRAPH IN THIS CRITERIA (UNDER 20 WORDS) : COHERENCE AND COHESION with 5 factors: Logical structure,Introduction & conclusion present , Supported main points ,Accurate linking words , Variety in linking words. Each factor discibe in one sentences between 15-20 words. Use this structure:\n -only the comment about factor 1\n-only the comment about factor 2\n-... IN LESS THAN 20 WORDS\n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//evaluate2
+router.post('/evaluate-paragraph-2', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `GIVE THE BAND SCORE OF THIS CRITERIA : LEXICAL RESOURCE .DONT ANSWER ANYTHING ELSE (ONLY NUMBER NO ANY OTHER TEXT OR CHARACTER , ALWAYS SHOW FIRST DECIMAL DIGIT) \n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//discribe2
+router.post('/discribe-paragraph-2', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `DESCRIBE THIS PARAGRAPH IN THIS CRITERIA (UNDER 20 WORDS) : LEXICAL RESOURCE with 2 factors: Varied vocabulary, Accurate spelling & word formation. Each factor discibe in one sentences between 15 - 20 words. Use this structure:\n -only the comment about factor 1\n-only the comment about factor 2\n-...\n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//evaluate3
+router.post('/evaluate-paragraph-3', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `GIVE THE BAND SCORE OF THIS CRITERIA : GRAMMATICAL RANGE .DONT ANSWER ANYTHING ELSE (ONLY NUMBER NO ANY OTHER TEXT OR CHARACTER , ALWAYS SHOW FIRST DECIMAL DIGIT) \n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//discribe3
+router.post('/discribe-paragraph-3', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `DESCRIBE THIS PARAGRAPH IN THIS CRITERIA (UNDER 20 WORDS) : GRAMMATICAL RANGE with 2 factors: Mix of complex & simple sentences, Clear and correct grammar. Each factor describe in one sentences between 15 - 20 words. Use this structure:\n -only the comment about factor 1\n-only the comment about factor 2.\n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//evaluate4
+router.post('/evaluate-paragraph-4', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `GIVE THE BAND SCORE OF THIS CRITERIA :TASK ACHIEVEMENT .DONT ANSWER ANYTHING ELSE (ONLY NUMBER NO ANY OTHER TEXT OR CHARACTER , ALWAYS SHOW FIRST DECIMAL DIGIT) \n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+//discribe4
+router.post('/discribe-paragraph-4', authenticateToken, async (req, res) => {
+    const { task, paragraph } = req.body;
+    const { username } = req.user;
+
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `DESCRIBE THIS PARAGRAPH IN THIS CRITERIA (UNDER 20 WORDS) : TASK ACHIEVEMENT with 4 factors: Complete response, Clear & comprehensive ideas, Relevant & specific examples, Appropriate word count. Each factor descibe in one sentences between 15-20 words. Use this structure:\n -only the comment about factor 1\n-only the comment about factor 2\n-...\n\nTask:${task} \n\nParagraph: ${paragraph}`}],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const evaluation = response.data.choices[0].message.content.trim();
+
+        const db = await connectToDatabase();
+        const tasksCollection = db.collection('tasks');
+        const evaluationsCollection = db.collection('evaluations');
+
+        const taskDoc = await tasksCollection.findOne({ task });
+        if (!taskDoc) {
+            return res.status(500).json({ error: 'Failed to find task' });
+        }
+
+        const result = await evaluationsCollection.insertOne({ task_id: taskDoc._id, paragraph, evaluation, created_at: new Date(), evaluated_by: username });
+        res.json({ id: result.insertedId, evaluation });
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+
+// word-count
+router.post('/word-count', async (req, res) => {
+    const { task, paragraph } = req.body;
+    try {
+
+        const evaluation = ((paragraph.trim().split(/\s+/).filter(Boolean)).length).toString();
+
+
+        res.json({ id: evaluation});
+    } catch (error) {
+        console.error('Error evaluating paragraph:', error);
+        res.status(500).json({ error: 'Failed to evaluate paragraph' });
+    }
+});
+
+//grammar mistake
+router.post('/grammar-mistake', async (req, res) => {
+    const { paragraph } = req.body;
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `Count how many grammar mistakes in this following paragraph  (ONLY NUMBER, NO OTHER TEXT OR CHARACTER): \n\n${paragraph}\n\n[Construction : ANSWER ONLY THE NUMBER]` }],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        res.json({ suggestions: response.data.choices[0].message.content.trim() });
+    } catch (error) {
+        console.error('Error getting suggestions:', error);
+        res.status(500).json({ error: 'Failed to get suggestions' });
+    }
+});
+
+// word-link-count
+router.post('/word-link-count', async (req, res) => {
+    const { paragraph } = req.body;
+    try {
+        const response = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
+            model: model,
+            messages: [{ role: 'system', content: `Count how many linking words in this following paragraph : \n\n${paragraph}\n\n[Construction : ANSWER ONLY THE NUMBER]` }],
+        }, {
+            headers: {
+                'Authorization': `Bearer ${openRouterApiKey}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        res.json({ suggestions: response.data.choices[0].message.content.trim() });
+    } catch (error) {
+        console.error('Error getting suggestions:', error);
+        res.status(500).json({ error: 'Failed to get suggestions' });
+    }
+});
