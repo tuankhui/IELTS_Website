@@ -9,7 +9,7 @@ Refined and improved on our old project: [Project](https://github.com/0x2ee08/HS
 ## How to setup
 
 ### Setup environment
-There is an .env file in the back-end folder. Fill it with your API key from OpenRouter and your wanted mode. 
+There is an .env file in the back-end folder. Fill it with your API key from OpenRouter and your wanted model. 
 
 ### How to run
 
