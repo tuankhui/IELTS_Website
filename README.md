@@ -1,5 +1,3 @@
-<img width="1065" height="731" alt="image" src="https://github.com/user-attachments/assets/d12bbf3f-e5b3-4394-af1d-2f75a28546b0" /># IELTS Website
-
 IELTS Website is a website that supports IELTS Learner ^^.
 
 Refined and improved on our old project: [Project](https://github.com/0x2ee08/HSGS-Hackathon-Writing-2024)
